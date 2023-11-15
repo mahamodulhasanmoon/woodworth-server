@@ -1,0 +1,10 @@
+
+GET http://localhost:8080/api/categories
+
+
+# POST http://localhost:8080/api/categories 
+# content-type: application/json
+
+# {
+#     "title": "canada region only"
+# }

@@ -1,0 +1,21 @@
+
+  {
+	"compilerOptions": {
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"target": "es6",
+		"noImplicitAny": true,
+		"moduleResolution": "node",
+		"sourceMap": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "baseUrl": "./src",
+		"noEmit": false,
+		"paths": {
+			"*": ["node_modules/*", "src/types/*"],
+            "uploads/*": ["src/uploads/*"]
+		}
+	},
+	"include": ["./src/**/*"]
+}
