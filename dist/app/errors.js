@@ -19,7 +19,7 @@ const errorHandler = (error, _req, res, _next) => {
             message: error === null || error === void 0 ? void 0 : error.message,
         });
     }
-    res.status(500).json({ message: 'Something went wrong', error: error });
+    res.status(500).json({ status: error.status, message: error.message, error: error });
 };
 exports.errorHandler = errorHandler;
 //# sourceMappingURL=errors.js.map

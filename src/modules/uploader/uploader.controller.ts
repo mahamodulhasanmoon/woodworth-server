@@ -25,7 +25,7 @@ export const singleUploadController = async (req: Request, res: Response) => {
 
     const outputFileName = `${Date.now()}.webp`;
     const outputFilePath = path.resolve(uploadFolderPath, outputFileName);
-    // const outputFilePath = path.resolve(process.cwd(), 'uploads', outputFileName);
+
 
     await sharp(imageBuffer)
       .resize({ width: maxImageWidth })
@@ -45,7 +45,7 @@ export const singleUploadController = async (req: Request, res: Response) => {
   } catch (error) {
     // Handle errors here
     console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: error,message:error.message });
   }
 };
   
@@ -75,7 +75,7 @@ export const multipleUploadController = async (req: Request, res: Response) => {
       
       const outputFileName =`${file.originalname.replace(/\s/g, '_').replace(/\.[^/.]+$/, '')}_${Date.now()}.webp`;
 
-      const outputFilePath = path.resolve(process.cwd(), 'uploads', outputFileName);
+      const outputFilePath = path.resolve(uploadFolderPath, outputFileName);
 
       await sharp(imageBuffer)
         .resize({ width: maxImageWidth })
@@ -95,8 +95,7 @@ export const multipleUploadController = async (req: Request, res: Response) => {
     });
   } catch (error) {
     // Handle errors here
-    console.error(error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: error, message:error.message });
   }
 };
 

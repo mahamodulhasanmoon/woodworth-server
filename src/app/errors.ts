@@ -26,6 +26,6 @@ export const errorHandler = (error: NotFoundError, _req: Request, res: Response,
 	  });
 	}
   
-	res.status(500).json({ message: 'Something went wrong',error: error });
+	res.status(500).json({ status:error.status, message: error.message ,error: error });
   };
   

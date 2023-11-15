@@ -33,7 +33,6 @@ const singleUploadController = (req, res) => __awaiter(void 0, void 0, void 0, f
         }
         const outputFileName = `${Date.now()}.webp`;
         const outputFilePath = path_1.default.resolve(uploadFolderPath, outputFileName);
-        // const outputFilePath = path.resolve(process.cwd(), 'uploads', outputFileName);
         yield (0, sharp_1.default)(imageBuffer)
             .resize({ width: maxImageWidth })
             .webp(compressionOptions)
@@ -51,7 +50,7 @@ const singleUploadController = (req, res) => __awaiter(void 0, void 0, void 0, f
     catch (error) {
         // Handle errors here
         console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: error, message: error.message });
     }
 });
 exports.singleUploadController = singleUploadController;
@@ -69,6 +68,11 @@ const multipleUploadController = (req, res) => __awaiter(void 0, void 0, void 0,
                 quality: 60,
             };
             const maxImageWidth = 1920;
+            const uploadFolderPath = path_1.default.resolve(process.cwd(), 'dist', 'uploads');
+            if (!fs_1.default.existsSync(uploadFolderPath)) {
+                // If not, create the "upload" folder
+                fs_1.default.mkdirSync(uploadFolderPath);
+            }
             const outputFileName = `${file.originalname.replace(/\s/g, '_').replace(/\.[^/.]+$/, '')}_${Date.now()}.webp`;
             const outputFilePath = path_1.default.resolve(process.cwd(), 'uploads', outputFileName);
             yield (0, sharp_1.default)(imageBuffer)
