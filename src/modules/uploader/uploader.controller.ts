@@ -67,6 +67,11 @@ export const multipleUploadController = async (req: Request, res: Response) => {
       };
 
       const maxImageWidth = 1920;
+      const uploadFolderPath = path.resolve(process.cwd(), 'dist', 'uploads');
+      if (!fs.existsSync(uploadFolderPath)) {
+        // If not, create the "upload" folder
+        fs.mkdirSync(uploadFolderPath);
+      }
       
       const outputFileName =`${file.originalname.replace(/\s/g, '_').replace(/\.[^/.]+$/, '')}_${Date.now()}.webp`;
 
