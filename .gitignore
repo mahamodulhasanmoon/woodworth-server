@@ -24,7 +24,6 @@ build/Release/dist
 # Dependency directory
 # https://docs.npmjs.com/cli/shrinkwrap#caveats
 node_modules
-dist
 
 
 # Debug log from npm
