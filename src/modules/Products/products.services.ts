@@ -24,7 +24,7 @@ export const getAllProductsService = async (queries:any) => {
  
 
 try {
-    const data = await Products.find(query)
+    const data = await Products.find(query).sort({ slNo: 1 })
     const totalData = await Products.countDocuments();
     return   {data,totalData}
 } catch (error) {
