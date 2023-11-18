@@ -18,7 +18,7 @@ export const createPoductsController = async (req:Request, res:Response) => {
             status:400,
             error:error,
             message:error.message
-        });
+        }); 
     } 
     };
     
