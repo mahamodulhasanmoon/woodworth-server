@@ -11,4 +11,6 @@ exports.productsRouter.route('/:id')
     .get(products_controller_1.getProductsByIdController)
     .patch(products_controller_1.updateProductsByIdController)
     .delete(products_controller_1.deleteProductsByIdController);
+exports.productsRouter.route('/status/:id')
+    .get(products_controller_1.updateStatusByIdController);
 //# sourceMappingURL=products.routes.js.map

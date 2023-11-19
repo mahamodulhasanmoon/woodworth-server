@@ -52,7 +52,9 @@ const productsSchema = new mongoose_1.Schema({
             },
             otherSpList: Array,
         }
-    ]
+    ],
+    isNewStyle: Boolean,
+    isCanandaRegion: Boolean
 }, { timestamps: true });
 const Products = (0, mongoose_1.model)('Products', productsSchema);
 exports.default = Products;

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateProductsByIdController = exports.deleteProductsByIdController = exports.getProductsByIdController = exports.getAllProductsController = exports.createPoductsController = void 0;
+exports.updateStatusByIdController = exports.updateProductsByIdController = exports.deleteProductsByIdController = exports.getProductsByIdController = exports.getAllProductsController = exports.createPoductsController = void 0;
 const products_services_1 = require("./products.services");
 const createPoductsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -31,9 +31,11 @@ const createPoductsController = (req, res) => __awaiter(void 0, void 0, void 0, 
 exports.createPoductsController = createPoductsController;
 const getAllProductsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const category = req.query.categoryId;
+        const { categoryId, isNewStyle, isCanandaRegion } = req.query;
         const queries = {
-            category: category
+            category: categoryId,
+            isNewStyle: isNewStyle,
+            isCanandaRegion: isCanandaRegion
         };
         const { data, totalData } = yield (0, products_services_1.getAllProductsService)(queries);
         res.status(200).json({
@@ -109,4 +111,25 @@ const updateProductsByIdController = (req, res) => __awaiter(void 0, void 0, voi
     }
 });
 exports.updateProductsByIdController = updateProductsByIdController;
+const updateStatusByIdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const query = req.query;
+        console.log(query);
+        const data = yield (0, products_services_1.updateStatusByIdService)(id, query);
+        res.status(200).json({
+            status: 200,
+            message: "updated Successfully",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.updateStatusByIdController = updateStatusByIdController;
 //# sourceMappingURL=products.controller.js.map

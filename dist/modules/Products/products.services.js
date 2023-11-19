@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProductsByIdService = exports.updateProductsByIdService = exports.getProductsByIdService = exports.getAllProductsService = exports.createProductsService = void 0;
+exports.deleteProductsByIdService = exports.updateStatusByIdService = exports.updateProductsByIdService = exports.getProductsByIdService = exports.getAllProductsService = exports.createProductsService = void 0;
 const products_model_1 = __importDefault(require("./products.model"));
 const createProductsService = (productData) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -27,12 +27,15 @@ exports.createProductsService = createProductsService;
 const getAllProductsService = (queries) => __awaiter(void 0, void 0, void 0, function* () {
     let query = {};
     if (queries) {
-        const { category } = queries;
-        category && (query.category = category);
+        const { category, isCanandaRegion, isNewStyle } = queries;
+        category && (query.category = (category));
+        isCanandaRegion && (query.isCanandaRegion = isCanandaRegion);
+        isNewStyle && (query.isNewStyle = isNewStyle);
     }
-    if (!(query === null || query === void 0 ? void 0 : query.category)) {
+    if (!(query === null || query === void 0 ? void 0 : query.category) && (!query.isCanandaRegion && !query.isNewStyle)) {
         query = { category: { $ne: '6554ca644e2d94d787efb661' } };
     }
+    console.log(query);
     try {
         const data = yield products_model_1.default.find(query).sort({ slNo: 1 });
         const totalData = yield products_model_1.default.countDocuments(query);
@@ -64,6 +67,17 @@ const updateProductsByIdService = (id, productsData) => __awaiter(void 0, void 0
     }
 });
 exports.updateProductsByIdService = updateProductsByIdService;
+// status update
+const updateStatusByIdService = (id, productsData) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield products_model_1.default.findByIdAndUpdate(id, productsData, { new: true });
+        return { data };
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.updateStatusByIdService = updateStatusByIdService;
 const deleteProductsByIdService = (id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield products_model_1.default.findByIdAndDelete(id);
