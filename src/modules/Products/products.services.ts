@@ -12,27 +12,27 @@ export const createProductsService = async (productData:Object) => {
 
 };
 
-export const getAllProductsService = async (queries:any) => {
+
+export const getAllProductsService = async (queries: any) => {
     let query: any = {};
 
     if (queries) {
         const { category } = queries;
         category && (query.category = category);
     }
-    
-    
- 
 
-try {
-    const data = await Products.find(query).sort({ slNo: 1 })
-    const totalData = await Products.countDocuments();
-    return   {data,totalData}
-} catch (error) {
-    throw new Error(error)
-}
- 
+    if (!query?.category) {
+        query = { category: { $ne: '6554ca644e2d94d787efb661' } };
+    }
+    try {
+        const data = await Products.find(query).sort({ slNo: 1 });
+        const totalData = await Products.countDocuments(query);
+        return { data, totalData };
+    } catch (error) {
+        throw new Error(error);
+    }
+};
 
-}
 
 export const getProductsByIdService = async (id:String) => {
 
