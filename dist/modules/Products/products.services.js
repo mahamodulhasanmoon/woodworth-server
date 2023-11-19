@@ -30,9 +30,12 @@ const getAllProductsService = (queries) => __awaiter(void 0, void 0, void 0, fun
         const { category } = queries;
         category && (query.category = category);
     }
+    if (!(query === null || query === void 0 ? void 0 : query.category)) {
+        query = { category: { $ne: '6554ca644e2d94d787efb661' } };
+    }
     try {
-        const data = yield products_model_1.default.find(query);
-        const totalData = yield products_model_1.default.countDocuments();
+        const data = yield products_model_1.default.find(query).sort({ slNo: 1 });
+        const totalData = yield products_model_1.default.countDocuments(query);
         return { data, totalData };
     }
     catch (error) {
@@ -40,6 +43,7 @@ const getAllProductsService = (queries) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.getAllProductsService = getAllProductsService;
+// end of the product code service
 const getProductsByIdService = (id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield products_model_1.default.findById(id);

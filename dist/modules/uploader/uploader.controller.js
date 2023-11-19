@@ -74,7 +74,7 @@ const multipleUploadController = (req, res) => __awaiter(void 0, void 0, void 0,
                 fs_1.default.mkdirSync(uploadFolderPath);
             }
             const outputFileName = `${file.originalname.replace(/\s/g, '_').replace(/\.[^/.]+$/, '')}_${Date.now()}.webp`;
-            const outputFilePath = path_1.default.resolve(process.cwd(), 'uploads', outputFileName);
+            const outputFilePath = path_1.default.resolve(uploadFolderPath, outputFileName);
             yield (0, sharp_1.default)(imageBuffer)
                 .resize({ width: maxImageWidth })
                 .webp(compressionOptions)
@@ -92,8 +92,7 @@ const multipleUploadController = (req, res) => __awaiter(void 0, void 0, void 0,
     }
     catch (error) {
         // Handle errors here
-        console.error(error);
-        res.status(500).json({ error: 'Internal server error' });
+        res.status(500).json({ error: error, message: error.message });
     }
 });
 exports.multipleUploadController = multipleUploadController;
