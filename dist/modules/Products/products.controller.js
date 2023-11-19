@@ -31,11 +31,12 @@ const createPoductsController = (req, res) => __awaiter(void 0, void 0, void 0, 
 exports.createPoductsController = createPoductsController;
 const getAllProductsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { categoryId, isNewStyle, isCanandaRegion } = req.query;
+        const { categoryId, isNewStyle, isCanandaRegion, isAdmin } = req.query;
         const queries = {
             category: categoryId,
             isNewStyle: isNewStyle,
-            isCanandaRegion: isCanandaRegion
+            isCanandaRegion: isCanandaRegion,
+            isAdmin: isAdmin
         };
         const { data, totalData } = yield (0, products_services_1.getAllProductsService)(queries);
         res.status(200).json({

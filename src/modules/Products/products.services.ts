@@ -17,16 +17,22 @@ export const getAllProductsService = async (queries: any) => {
     let query: any = {};
 
     if (queries) {
-        const { category,isCanandaRegion,isNewStyle } = queries;
+        const { category,isCanandaRegion,isNewStyle,isAdmin } = queries;
         category && (query.category = (category));
         isCanandaRegion && (query.isCanandaRegion = isCanandaRegion);
         isNewStyle && (query.isNewStyle = isNewStyle);
+        isAdmin && (query.isAdmin = Boolean(isAdmin));
     }
-
-    if (!query?.category && (!query.isCanandaRegion && !query.isNewStyle)) {
+   
+    if (!query?.category && (!query.isCanandaRegion && !query.isNewStyle  && !query.isAdmin)) {
+        console.log(query.isAdmin);
         query = { category: { $ne: '6554ca644e2d94d787efb661' } };
     }
-    console.log(query);
+ 
+    if(query.isAdmin){
+        query={};
+    }
+  
     try {
         const data = await Products.find(query).sort({ slNo: 1 });
         const totalData = await Products.countDocuments(query);

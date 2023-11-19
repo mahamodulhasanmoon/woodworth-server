@@ -27,15 +27,19 @@ exports.createProductsService = createProductsService;
 const getAllProductsService = (queries) => __awaiter(void 0, void 0, void 0, function* () {
     let query = {};
     if (queries) {
-        const { category, isCanandaRegion, isNewStyle } = queries;
+        const { category, isCanandaRegion, isNewStyle, isAdmin } = queries;
         category && (query.category = (category));
         isCanandaRegion && (query.isCanandaRegion = isCanandaRegion);
         isNewStyle && (query.isNewStyle = isNewStyle);
+        isAdmin && (query.isAdmin = Boolean(isAdmin));
     }
-    if (!(query === null || query === void 0 ? void 0 : query.category) && (!query.isCanandaRegion && !query.isNewStyle)) {
+    if (!(query === null || query === void 0 ? void 0 : query.category) && (!query.isCanandaRegion && !query.isNewStyle && !query.isAdmin)) {
+        console.log(query.isAdmin);
         query = { category: { $ne: '6554ca644e2d94d787efb661' } };
     }
-    console.log(query);
+    if (query.isAdmin) {
+        query = {};
+    }
     try {
         const data = yield products_model_1.default.find(query).sort({ slNo: 1 });
         const totalData = yield products_model_1.default.countDocuments(query);

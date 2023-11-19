@@ -5,6 +5,7 @@ interface queries{
     category: string | null | any,
     isNewStyle : string | null | any
     isCanandaRegion : string | null | any
+    isAdmin : Boolean | null | any
 }
 export const createPoductsController = async (req:Request, res:Response) => {
     try {
@@ -26,11 +27,12 @@ export const createPoductsController = async (req:Request, res:Response) => {
     
     export const getAllProductsController = async (req:Request, res:Response) => {
         try {
-            const {categoryId,isNewStyle,isCanandaRegion} = req.query
+            const {categoryId,isNewStyle,isCanandaRegion,isAdmin} = req.query
             const queries:queries = {
                 category:categoryId,
                 isNewStyle:isNewStyle,
-                isCanandaRegion:isCanandaRegion
+                isCanandaRegion:isCanandaRegion,
+                isAdmin:isAdmin
             }
             
             const {data,totalData} = await getAllProductsService(queries)
