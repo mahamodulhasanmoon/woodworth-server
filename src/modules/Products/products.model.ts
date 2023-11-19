@@ -53,7 +53,9 @@ const productsSchema = new Schema({
             otherSpList: Array,
 
           }
-        ]
+        ],
+        isNewStyle:Boolean,
+        isCanandaRegion:Boolean
       
 },{timestamps:true})
 

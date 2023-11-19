@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
-import { createProductsService,getAllProductsService,getProductsByIdService,updateProductsByIdService,deleteProductsByIdService } from "./products.services";
+import { createProductsService,getAllProductsService,getProductsByIdService,updateProductsByIdService,deleteProductsByIdService, updateStatusByIdService } from "./products.services";
 
 interface queries{
-    category: string | null | any
+    category: string | null | any,
+    isNewStyle : string | null | any
+    isCanandaRegion : string | null | any
 }
 export const createPoductsController = async (req:Request, res:Response) => {
     try {
@@ -24,9 +26,11 @@ export const createPoductsController = async (req:Request, res:Response) => {
     
     export const getAllProductsController = async (req:Request, res:Response) => {
         try {
-            const category = req.query.categoryId
+            const {categoryId,isNewStyle,isCanandaRegion} = req.query
             const queries:queries = {
-                category:category
+                category:categoryId,
+                isNewStyle:isNewStyle,
+                isCanandaRegion:isCanandaRegion
             }
             
             const {data,totalData} = await getAllProductsService(queries)
@@ -96,6 +100,28 @@ export const createPoductsController = async (req:Request, res:Response) => {
                 
                     res.status(201).json({
                         status:201,
+                        message:"updated Successfully",
+                        data:data
+                    });
+                } catch (error) {
+                    res.status(400).json({
+                        status:400,
+                        error:error,
+                        message:error.message
+                    });
+                } 
+                };
+            export const updateStatusByIdController = async (req:Request, res:Response) => {
+                try {
+                    const {id} = req.params;
+                    
+                    
+                    const query = req.query
+                    console.log(query);
+                    const data = await updateStatusByIdService(id,query)
+                
+                    res.status(200).json({
+                        status:200,
                         message:"updated Successfully",
                         data:data
                     });
