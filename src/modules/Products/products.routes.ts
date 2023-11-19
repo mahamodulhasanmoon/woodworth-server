@@ -7,6 +7,8 @@ productsRouter.route('/')
 .post(createPoductsController)
 .get(getAllProductsController)
 
+
+
 productsRouter.route('/:id')
 .get(getProductsByIdController)
 .patch(updateProductsByIdController)
