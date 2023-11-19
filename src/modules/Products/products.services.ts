@@ -33,6 +33,7 @@ export const getAllProductsService = async (queries: any) => {
     }
 };
 
+// end of the product code service
 
 export const getProductsByIdService = async (id:String) => {
 
