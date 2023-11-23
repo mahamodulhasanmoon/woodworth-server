@@ -23,7 +23,6 @@ export const updateCategoryService = async (id:String,data:Object) => {
 export const deleteCategoryService = async (id:String) => {
     try {
         const data = await Category.findByIdAndDelete(id);
-        console.log(data)
         if (!data) {
             throw new Error('Category not found'); 
         }

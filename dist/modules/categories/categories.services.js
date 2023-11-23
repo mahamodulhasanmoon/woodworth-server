@@ -33,7 +33,6 @@ exports.updateCategoryService = updateCategoryService;
 const deleteCategoryService = (id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield categories_model_1.default.findByIdAndDelete(id);
-        console.log(data);
         if (!data) {
             throw new Error('Category not found');
         }
