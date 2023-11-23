@@ -1,15 +1,16 @@
 import { Router } from "express";
 import { createCategoryController, deleteCategoryController, getAllCategoryController, updateCategoryController } from "./categories.controller";
 import { authorization } from "./../../middleware/authorization";
+import { verifyToken } from "../../middleware/verifyToken";
 
 const categoryRoutes = Router();
 
 categoryRoutes.route('/')
 .get(getAllCategoryController)
-.post(authorization("admin"),createCategoryController)
+.post(verifyToken,authorization("admin"),createCategoryController)
 
 categoryRoutes.route('/:id')
-.patch(authorization("admin"),updateCategoryController)
-.delete(authorization("admin"),deleteCategoryController)
+.patch(verifyToken,authorization("admin"),updateCategoryController)
+.delete(verifyToken,authorization("admin"),deleteCategoryController)
 
 export default categoryRoutes
