@@ -2,7 +2,8 @@ import Category from "./categories.model";
 
 export const getAlllCategoryService = async () => {
 
-    const data = await Category.find({})
+    const data = await Category.find({}).sort({ updatedAt: 1 });
+
     const totalData = await Category.countDocuments();
     return   {data,totalData}
  

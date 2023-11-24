@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteCategoryService = exports.updateCategoryService = exports.createCategoryService = exports.getAlllCategoryService = void 0;
 const categories_model_1 = __importDefault(require("./categories.model"));
 const getAlllCategoryService = () => __awaiter(void 0, void 0, void 0, function* () {
-    const data = yield categories_model_1.default.find({});
+    const data = yield categories_model_1.default.find({}).sort({ updatedAt: 1 });
     const totalData = yield categories_model_1.default.countDocuments();
     return { data, totalData };
 });
