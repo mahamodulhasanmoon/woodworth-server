@@ -25,15 +25,11 @@ const productsSchema = new Schema({
           type: String,
          
         },
-        category: {
+        category: [{
           type: Types.ObjectId,
-          required: [true, 'Category is required'],
-          ref:'Category',
-        },
-        // vector: {
-        //   type: String,
-        //   required: [true, 'Vector is required']
-        // },
+          required: [true, 'At least one category is required'],
+          ref: 'Category',
+        }],
         featureImages:Array,
         images: Array,
         details: {

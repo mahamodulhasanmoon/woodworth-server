@@ -25,15 +25,11 @@ const productsSchema = new mongoose_1.Schema({
     class: {
         type: String,
     },
-    category: {
-        type: mongoose_1.Types.ObjectId,
-        required: [true, 'Category is required'],
-        ref: 'Category',
-    },
-    // vector: {
-    //   type: String,
-    //   required: [true, 'Vector is required']
-    // },
+    category: [{
+            type: mongoose_1.Types.ObjectId,
+            required: [true, 'At least one category is required'],
+            ref: 'Category',
+        }],
     featureImages: Array,
     images: Array,
     details: {
