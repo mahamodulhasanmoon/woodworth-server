@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getWarrentyController = exports.createNewWarrentyController = exports.getSliderController = exports.createNewSliderController = void 0;
+exports.getWarrentyController = exports.createNewWarrentyController = exports.deleteSliderController = exports.getSliderController = exports.createNewSliderController = void 0;
 const cms_service_1 = require("./cms.service");
 const createNewSliderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -47,6 +47,24 @@ const getSliderController = (req, res) => __awaiter(void 0, void 0, void 0, func
     }
 });
 exports.getSliderController = getSliderController;
+const deleteSliderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const data = yield (0, cms_service_1.deleteSliderService)(id);
+        res.status(200).json({
+            status: 200,
+            message: "deleted successfully",
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.deleteSliderController = deleteSliderController;
 // for warrenty page
 const createNewWarrentyController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {

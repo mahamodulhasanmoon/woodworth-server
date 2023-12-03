@@ -28,6 +28,15 @@ export const getSliderService = async () => {
        throw new Error(error)
    }
  }
+export const deleteSliderService = async (id:string) => {
+
+    try {
+       const result = await Slider.findByIdAndDelete(id);
+       return   result
+   } catch (error) {
+       throw new Error(error)
+   }
+ }
 
 //   warrentyPage
 

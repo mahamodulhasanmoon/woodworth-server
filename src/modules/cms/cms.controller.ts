@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createNewSliderService, createNewWarrentyService, getSliderService, getWarrentyService } from "./cms.service";
+import { createNewSliderService, createNewWarrentyService, deleteSliderService, getSliderService, getWarrentyService } from "./cms.service";
 
 export const createNewSliderController = async (req:Request,res:Response) => {
     try {
@@ -34,6 +34,27 @@ export const getSliderController = async (req:Request,res:Response) => {
             status:200,
             message:"successfull",
             data:data
+        });
+    } catch (error) {
+    
+        res.status(400).json({
+            status:400,
+            error:error,
+            message:error.message
+        });
+    }
+}
+export const deleteSliderController = async (req:Request,res:Response) => {
+    try {
+        
+const {id} = req.params;
+        
+        const data= await deleteSliderService(id)
+    
+        res.status(200).json({
+            status:200,
+            message:"deleted successfully",
+            
         });
     } catch (error) {
     

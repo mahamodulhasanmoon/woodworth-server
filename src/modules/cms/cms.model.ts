@@ -2,9 +2,12 @@ import { Schema, model } from "mongoose";
 
 const sliderSchema = new Schema({
     backgroundImageUrl:String,
-    heading:String,
-    leftText:String,
-    rightText:String
+    heading1:String,
+    heading2:String,
+    leftText1:String,
+    leftText2:String,
+    rightText1:String,
+    rightText2:String
 })
 
 const warrentySchema = new Schema({

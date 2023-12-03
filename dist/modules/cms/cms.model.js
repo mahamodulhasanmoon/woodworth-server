@@ -4,9 +4,12 @@ exports.Warrenty = exports.Slider = void 0;
 const mongoose_1 = require("mongoose");
 const sliderSchema = new mongoose_1.Schema({
     backgroundImageUrl: String,
-    heading: String,
-    leftText: String,
-    rightText: String
+    heading1: String,
+    heading2: String,
+    leftText1: String,
+    leftText2: String,
+    rightText1: String,
+    rightText2: String
 });
 const warrentySchema = new mongoose_1.Schema({
     claims: String,

@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getWarrentyService = exports.createNewWarrentyService = exports.getSliderService = exports.createNewSliderService = void 0;
+exports.getWarrentyService = exports.createNewWarrentyService = exports.deleteSliderService = exports.getSliderService = exports.createNewSliderService = void 0;
 const cms_model_1 = require("./cms.model");
 const createNewSliderService = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -31,6 +31,16 @@ const getSliderService = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getSliderService = getSliderService;
+const deleteSliderService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Slider.findByIdAndDelete(id);
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.deleteSliderService = deleteSliderService;
 //   warrentyPage
 const createNewWarrentyService = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
