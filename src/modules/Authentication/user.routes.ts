@@ -11,6 +11,9 @@ authRouter.route('/login')
 authRouter.route('/me')
 .get(verifyToken,getMe)
 
+authRouter.route('/user/:id')
+.patch()
+
 
 
 export default authRouter

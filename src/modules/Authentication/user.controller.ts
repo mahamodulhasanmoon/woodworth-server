@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { findUserByEmail, signupService } from "./user.services";
+import { findUserByEmail, signupService, updateUserByIdService } from "./user.services";
 import { genarateToken } from "./../../utils/token";
 
 export const createUser = async (req:Request, res:Response,) => {
@@ -93,3 +93,24 @@ export const getMe = async (req:Request, res:Response) => {
     });
   }
 };
+
+
+export const updateUserByIdController = async (req:Request, res:Response) => {
+  try {
+      const {id} = req.params
+      
+      const data = await updateUserByIdService(id,req.body)
+  
+      res.status(201).json({
+          status:201,
+          message:"updated Successfully",
+          data:data
+      });
+  } catch (error) {
+      res.status(400).json({
+          status:400,
+          error:error,
+          message:error.message
+      });
+  } 
+  };
