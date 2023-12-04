@@ -11,6 +11,6 @@ authRouter.route('/login')
 authRouter.route('/me')
     .get(verifyToken_1.verifyToken, user_controller_1.getMe);
 authRouter.route('/user/:id')
-    .patch();
+    .patch(user_controller_1.updateUserByIdController);
 exports.default = authRouter;
 //# sourceMappingURL=user.routes.js.map

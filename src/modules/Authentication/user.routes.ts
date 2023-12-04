@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createUser, getMe, loginUserController } from "./user.controller";
+import { createUser, getMe, loginUserController, updateUserByIdController } from "./user.controller";
 import { verifyToken } from "../../middleware/verifyToken";
 
 const  authRouter = Router();
@@ -12,7 +12,7 @@ authRouter.route('/me')
 .get(verifyToken,getMe)
 
 authRouter.route('/user/:id')
-.patch()
+.patch(updateUserByIdController)
 
 
 
