@@ -108,11 +108,12 @@ exports.getMe = getMe;
 const updateUserByIdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id } = req.params;
+        console.log(id);
         const data = yield (0, user_services_1.updateUserByIdService)(id, req.body);
         res.status(201).json({
             status: 201,
             message: "updated Successfully",
-            data: data
+            data: req.body
         });
     }
     catch (error) {

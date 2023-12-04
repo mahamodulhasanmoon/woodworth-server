@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUserByIdService = exports.findUserByToken = exports.findUserByEmail = exports.signupService = void 0;
+const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const user_model_1 = __importDefault(require("./user.model"));
 const signupService = (authInfo) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.default.create(authInfo);
@@ -28,6 +29,8 @@ const findUserByToken = (token) => __awaiter(void 0, void 0, void 0, function* (
 });
 exports.findUserByToken = findUserByToken;
 const updateUserByIdService = (id, userData) => __awaiter(void 0, void 0, void 0, function* () {
+    const updatedData = userData;
+    updatedData.password = bcryptjs_1.default.hashSync(userData === null || userData === void 0 ? void 0 : userData.password);
     try {
         const data = yield user_model_1.default.findByIdAndUpdate(id, userData);
         return { data };
