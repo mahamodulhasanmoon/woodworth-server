@@ -17,10 +17,10 @@ const productsSchema = new Schema({
           type: String,
           required: [true, 'Color is required']
         },
-        label: {
-          type: String,
-          required: [true, 'Label is required']
-        },
+        // label: {
+        //   type: String,
+        //   required: [true, 'Label is required']
+        // },
         class: {
           type: String,
          

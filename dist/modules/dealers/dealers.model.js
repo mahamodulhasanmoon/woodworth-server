@@ -28,6 +28,10 @@ const dealerSchema = new mongoose_1.Schema({
     startupYear: { type: String, required: true },
     businessLicense: { type: String, required: true },
     referralDescription: String,
+    hearWith: {
+        type: Array,
+        required: true
+    },
     isApprove: {
         type: Boolean,
         default: false

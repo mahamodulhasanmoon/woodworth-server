@@ -18,10 +18,10 @@ const productsSchema = new mongoose_1.Schema({
         type: String,
         required: [true, 'Color is required']
     },
-    label: {
-        type: String,
-        required: [true, 'Label is required']
-    },
+    // label: {
+    //   type: String,
+    //   required: [true, 'Label is required']
+    // },
     class: {
         type: String,
     },
