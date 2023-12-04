@@ -20,7 +20,7 @@ var __rest = (this && this.__rest) || function (s, e) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getMe = exports.loginUserController = exports.createUser = void 0;
+exports.updateUserByIdController = exports.getMe = exports.loginUserController = exports.createUser = void 0;
 const user_services_1 = require("./user.services");
 const token_1 = require("./../../utils/token");
 const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -105,4 +105,23 @@ const getMe = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getMe = getMe;
+const updateUserByIdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const data = yield (0, user_services_1.updateUserByIdService)(id, req.body);
+        res.status(201).json({
+            status: 201,
+            message: "updated Successfully",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.updateUserByIdController = updateUserByIdController;
 //# sourceMappingURL=user.controller.js.map

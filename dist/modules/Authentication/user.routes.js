@@ -10,5 +10,7 @@ authRouter.route('/login')
     .post(user_controller_1.loginUserController);
 authRouter.route('/me')
     .get(verifyToken_1.verifyToken, user_controller_1.getMe);
+authRouter.route('/user/:id')
+    .patch();
 exports.default = authRouter;
 //# sourceMappingURL=user.routes.js.map

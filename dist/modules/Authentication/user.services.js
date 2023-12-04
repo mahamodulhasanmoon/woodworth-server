@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.findUserByToken = exports.findUserByEmail = exports.signupService = void 0;
+exports.updateUserByIdService = exports.findUserByToken = exports.findUserByEmail = exports.signupService = void 0;
 const user_model_1 = __importDefault(require("./user.model"));
 const signupService = (authInfo) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.default.create(authInfo);
@@ -27,4 +27,14 @@ const findUserByToken = (token) => __awaiter(void 0, void 0, void 0, function* (
     return yield user_model_1.default.findOne({ confirmationToken: token });
 });
 exports.findUserByToken = findUserByToken;
+const updateUserByIdService = (id, userData) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield user_model_1.default.findByIdAndUpdate(id, userData);
+        return { data };
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.updateUserByIdService = updateUserByIdService;
 //# sourceMappingURL=user.services.js.map
