@@ -15,8 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.updateUserByIdService = exports.findUserByToken = exports.findUserByEmail = exports.signupService = void 0;
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const user_model_1 = __importDefault(require("./user.model"));
+const dealers_model_1 = __importDefault(require("./../dealers/dealers.model"));
 const signupService = (authInfo) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.default.create(authInfo);
+    yield dealers_model_1.default.findByIdAndUpdate(authInfo.dealerId);
     return user;
 });
 exports.signupService = signupService;
