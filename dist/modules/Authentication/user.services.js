@@ -18,7 +18,7 @@ const user_model_1 = __importDefault(require("./user.model"));
 const dealers_model_1 = __importDefault(require("./../dealers/dealers.model"));
 const signupService = (authInfo) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.default.create(authInfo);
-    yield dealers_model_1.default.findByIdAndUpdate(authInfo.dealerId);
+    yield dealers_model_1.default.findByIdAndUpdate(authInfo.dealerId, { isApprove: true });
     return user;
 });
 exports.signupService = signupService;

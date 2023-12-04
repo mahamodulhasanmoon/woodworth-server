@@ -4,7 +4,7 @@ import Dealer from "./../dealers/dealers.model";
 
 export const signupService = async (authInfo:any)=>{
     const user = await User.create(authInfo)
-     await Dealer.findByIdAndUpdate(authInfo.dealerId)
+     await Dealer.findByIdAndUpdate(authInfo.dealerId,{isApprove:true})
     
     return  user
     

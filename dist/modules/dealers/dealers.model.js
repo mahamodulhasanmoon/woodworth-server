@@ -15,7 +15,7 @@ const dealerSchema = new mongoose_1.Schema({
     officePhone: { type: String, required: true },
     fax: { type: String, required: true },
     email: { type: String, required: true },
-    website: String,
+    website: String, // Not required
     contactFirstName: { type: String, required: true },
     contactLastName: { type: String, required: true },
     position: { type: String, required: true },
