@@ -1,8 +1,10 @@
 import bcrypt from "bcryptjs";
 import User from "./user.model"
+import Dealer from "./../dealers/dealers.model";
 
 export const signupService = async (authInfo:any)=>{
     const user = await User.create(authInfo)
+     await Dealer.findByIdAndUpdate(authInfo.dealerId)
     
     return  user
     
