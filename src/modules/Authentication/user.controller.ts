@@ -98,13 +98,14 @@ export const getMe = async (req:Request, res:Response) => {
 export const updateUserByIdController = async (req:Request, res:Response) => {
   try {
       const {id} = req.params
+      console.log(id);
       
       const data = await updateUserByIdService(id,req.body)
   
       res.status(201).json({
           status:201,
           message:"updated Successfully",
-          data:data
+          data:req.body
       });
   } catch (error) {
       res.status(400).json({

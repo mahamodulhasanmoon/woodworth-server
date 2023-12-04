@@ -6,7 +6,7 @@ export const cmsRoutes = Router()
 
 cmsRoutes.route('/slider')
 .post(
-    // authorization("admin"),
+    authorization("admin"),
     createNewSliderController)
 
 
@@ -14,12 +14,12 @@ cmsRoutes.route('/slider')
 .get(getSliderController)
 cmsRoutes.route('/warrenty')
 .post(
-    // authorization("admin"),
+    authorization("admin"),
     createNewWarrentyController)
 .get(getWarrentyController)
 
 cmsRoutes.route('/slider/:id')
 .delete(
-    // authorization("admin"),
+    authorization("admin"),
     deleteSliderController)
 

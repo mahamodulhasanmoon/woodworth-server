@@ -1,3 +1,4 @@
+import bcrypt from "bcryptjs";
 import User from "./user.model"
 
 export const signupService = async (authInfo:any)=>{
@@ -16,6 +17,8 @@ export const signupService = async (authInfo:any)=>{
         return await User.findOne({ confirmationToken: token });
       };
       export const updateUserByIdService = async (id:String,userData:Object) => {
+       const updatedData:any = userData
+       updatedData.password = bcrypt.hashSync((userData as any)?.password)
 
         try {
             const data = await User.findByIdAndUpdate(id, userData)

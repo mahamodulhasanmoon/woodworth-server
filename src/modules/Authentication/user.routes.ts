@@ -10,9 +10,9 @@ authRouter.route('/login')
 .post(loginUserController)
 authRouter.route('/me')
 .get(verifyToken,getMe)
-
 authRouter.route('/user/:id')
 .patch(updateUserByIdController)
+
 
 
 
