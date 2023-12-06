@@ -36,7 +36,8 @@ const getAllProductsController = (req, res) => __awaiter(void 0, void 0, void 0,
             category: categoryId,
             isNewStyle: isNewStyle,
             isCanandaRegion: isCanandaRegion,
-            isAdmin: isAdmin
+            isAdmin: isAdmin,
+            // isAdmin:isAdmin
         };
         const { data, totalData } = yield (0, products_services_1.getAllProductsService)(queries);
         res.status(200).json({
