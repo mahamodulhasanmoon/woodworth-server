@@ -32,7 +32,8 @@ export const createPoductsController = async (req:Request, res:Response) => {
                 category:categoryId,
                 isNewStyle:isNewStyle,
                 isCanandaRegion:isCanandaRegion,
-                isAdmin:isAdmin
+                isAdmin:isAdmin,
+                // isAdmin:isAdmin
             }
             
             const {data,totalData} = await getAllProductsService(queries)
