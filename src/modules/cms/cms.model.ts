@@ -20,7 +20,17 @@ const warrentySchema = new Schema({
 
 
 })
+const contactSchema = new Schema({
+    title: { type: String, required: true },
+    address: { type: String, required: true },
+    phone: { type: String, required: true },
+    email: { type: String, required: true },
+    region: { type: String, required: true },
+    websites: { type: String, required: true },
+});
 
+// Define the model
+export const Contact = model('Contacts', contactSchema);
 export const Slider = model('Slider',sliderSchema)
 export const Warrenty = model('Warrenty',warrentySchema)
 

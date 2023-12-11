@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createNewSliderService, createNewWarrentyService, deleteSliderService, getSliderService, getWarrentyService } from "./cms.service";
+import { createNewSliderService, createNewWarrentyService, deleteSliderService, getSliderService, getWarrentyService ,createNewContactService, getContactsService} from "./cms.service";
 
 export const createNewSliderController = async (req:Request,res:Response) => {
     try {
@@ -11,6 +11,27 @@ export const createNewSliderController = async (req:Request,res:Response) => {
         res.status(201).json({
             status:201,
             message:"slider Created Successfully",
+            data:data
+        });
+    } catch (error) {
+    
+        res.status(400).json({
+            status:400,
+            error:error,
+            message:error.message
+        });
+    }
+}
+export const createNewContactController = async (req:Request,res:Response) => {
+    try {
+        
+
+        
+        const data= await createNewContactService(req.body)
+    
+        res.status(201).json({
+            status:201,
+            message:"New Record Added",
             data:data
         });
     } catch (error) {
@@ -98,6 +119,28 @@ export const getWarrentyController = async (_req:Request,res:Response) => {
 
         
         const data = await getWarrentyService()
+    
+        res.status(200).json({
+            status:200,
+            message:"successfull",
+            data:data
+        });
+    } catch (error) {
+    
+        res.status(400).json({
+            status:400,
+            error:error,
+            message:error.message
+        });
+    }
+}
+
+export const getContactController = async (req:Request,res:Response) => {
+    try {
+        
+
+        
+        const data= await getContactsService()
     
         res.status(200).json({
             status:200,
