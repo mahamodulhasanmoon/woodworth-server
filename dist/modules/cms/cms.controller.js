@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getWarrentyController = exports.createNewWarrentyController = exports.deleteSliderController = exports.getSliderController = exports.createNewSliderController = void 0;
+exports.getContactController = exports.getWarrentyController = exports.createNewWarrentyController = exports.deleteSliderController = exports.getSliderController = exports.createNewContactController = exports.createNewSliderController = void 0;
 const cms_service_1 = require("./cms.service");
 const createNewSliderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -29,6 +29,24 @@ const createNewSliderController = (req, res) => __awaiter(void 0, void 0, void 0
     }
 });
 exports.createNewSliderController = createNewSliderController;
+const createNewContactController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, cms_service_1.createNewContactService)(req.body);
+        res.status(201).json({
+            status: 201,
+            message: "New Record Added",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.createNewContactController = createNewContactController;
 const getSliderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, cms_service_1.getSliderService)();
@@ -102,4 +120,22 @@ const getWarrentyController = (_req, res) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.getWarrentyController = getWarrentyController;
+const getContactController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, cms_service_1.getContactsService)();
+        res.status(200).json({
+            status: 200,
+            message: "successfull",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.getContactController = getContactController;
 //# sourceMappingURL=cms.controller.js.map

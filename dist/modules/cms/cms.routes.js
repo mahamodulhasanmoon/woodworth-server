@@ -13,4 +13,10 @@ exports.cmsRoutes.route('/warrenty')
     .get(cms_controller_1.getWarrentyController);
 exports.cmsRoutes.route('/slider/:id')
     .delete((0, authorization_1.authorization)("admin"), cms_controller_1.deleteSliderController);
+// for Contacts Routes
+exports.cmsRoutes.route('/contacts')
+    .post(
+// authorization("admin"),
+cms_controller_1.createNewContactController)
+    .get(cms_controller_1.getContactController);
 //# sourceMappingURL=cms.routes.js.map

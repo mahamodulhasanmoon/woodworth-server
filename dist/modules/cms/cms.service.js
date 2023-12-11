@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getWarrentyService = exports.createNewWarrentyService = exports.deleteSliderService = exports.getSliderService = exports.createNewSliderService = void 0;
+exports.getContactsService = exports.createNewContactService = exports.getWarrentyService = exports.createNewWarrentyService = exports.deleteSliderService = exports.getSliderService = exports.createNewSliderService = void 0;
 const cms_model_1 = require("./cms.model");
 const createNewSliderService = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -65,4 +65,25 @@ const getWarrentyService = () => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.getWarrentyService = getWarrentyService;
+// for Contact CMS Services
+const createNewContactService = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Contact.create(data);
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.createNewContactService = createNewContactService;
+const getContactsService = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Warrenty.findOne();
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.getContactsService = getContactsService;
 //# sourceMappingURL=cms.service.js.map
