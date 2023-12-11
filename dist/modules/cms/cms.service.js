@@ -78,7 +78,7 @@ const createNewContactService = (data) => __awaiter(void 0, void 0, void 0, func
 exports.createNewContactService = createNewContactService;
 const getContactsService = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const result = yield cms_model_1.Warrenty.findOne();
+        const result = yield cms_model_1.Contact.find({});
         return result;
     }
     catch (error) {

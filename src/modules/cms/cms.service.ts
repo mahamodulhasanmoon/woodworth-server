@@ -82,7 +82,7 @@ export const createNewWarrentyService = async (data: WarrentyData) => {
   
  export const getContactsService = async () => {
   try {
-    const result = await Warrenty.findOne();
+    const result = await Contact.find({});
 
     return result;
   } catch (error) {
