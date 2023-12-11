@@ -28,9 +28,21 @@ const contactSchema = new Schema({
     region: { type: String, required: true },
     websites: { type: String, required: true },
 });
+const brandValueSchema = new Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    icon:{type: String}
+});
+const aboutUsSchema = new Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    thumbnail:{type: String}
+});
 
 // Define the model
 export const Contact = model('Contacts', contactSchema);
 export const Slider = model('Slider',sliderSchema)
 export const Warrenty = model('Warrenty',warrentySchema)
+export const Speciality = model('Speciality',brandValueSchema)
+export const Goal = model('Goal',aboutUsSchema)
 

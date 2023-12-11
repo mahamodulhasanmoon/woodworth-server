@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Warrenty = exports.Slider = exports.Contact = void 0;
+exports.Goal = exports.Speciality = exports.Warrenty = exports.Slider = exports.Contact = void 0;
 const mongoose_1 = require("mongoose");
 const sliderSchema = new mongoose_1.Schema({
     backgroundImageUrl: String,
@@ -27,8 +27,20 @@ const contactSchema = new mongoose_1.Schema({
     region: { type: String, required: true },
     websites: { type: String, required: true },
 });
+const brandValueSchema = new mongoose_1.Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    icon: { type: String }
+});
+const aboutUsSchema = new mongoose_1.Schema({
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    thumbnail: { type: String }
+});
 // Define the model
 exports.Contact = (0, mongoose_1.model)('Contacts', contactSchema);
 exports.Slider = (0, mongoose_1.model)('Slider', sliderSchema);
 exports.Warrenty = (0, mongoose_1.model)('Warrenty', warrentySchema);
+exports.Speciality = (0, mongoose_1.model)('Speciality', brandValueSchema);
+exports.Goal = (0, mongoose_1.model)('Goal', aboutUsSchema);
 //# sourceMappingURL=cms.model.js.map

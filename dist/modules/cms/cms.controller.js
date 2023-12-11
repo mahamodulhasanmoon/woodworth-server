@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getContactController = exports.getWarrentyController = exports.createNewWarrentyController = exports.deleteSliderController = exports.getSliderController = exports.createNewContactController = exports.createNewSliderController = void 0;
+exports.createSpecilityController = exports.getSpecilityController = exports.createGoalController = exports.getGoalsController = exports.createNewContactController = exports.getContactController = exports.getWarrentyController = exports.createNewWarrentyController = exports.deleteSliderController = exports.getSliderController = exports.createNewSliderController = void 0;
 const cms_service_1 = require("./cms.service");
 const createNewSliderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -29,24 +29,6 @@ const createNewSliderController = (req, res) => __awaiter(void 0, void 0, void 0
     }
 });
 exports.createNewSliderController = createNewSliderController;
-const createNewContactController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const data = yield (0, cms_service_1.createNewContactService)(req.body);
-        res.status(201).json({
-            status: 201,
-            message: "New Record Added",
-            data: data
-        });
-    }
-    catch (error) {
-        res.status(400).json({
-            status: 400,
-            error: error,
-            message: error.message
-        });
-    }
-});
-exports.createNewContactController = createNewContactController;
 const getSliderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, cms_service_1.getSliderService)();
@@ -120,6 +102,7 @@ const getWarrentyController = (_req, res) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.getWarrentyController = getWarrentyController;
+// contact Section
 const getContactController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, cms_service_1.getContactsService)();
@@ -138,4 +121,95 @@ const getContactController = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.getContactController = getContactController;
+const createNewContactController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, cms_service_1.createNewContactService)(req.body);
+        res.status(201).json({
+            status: 201,
+            message: "New Record Added",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.createNewContactController = createNewContactController;
+// Goal set
+const getGoalsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, cms_service_1.getGoalService)();
+        res.status(200).json({
+            status: 200,
+            message: "successfull",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.getGoalsController = getGoalsController;
+const createGoalController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, cms_service_1.createGoalService)(req.body);
+        res.status(201).json({
+            status: 201,
+            message: "New Record Added",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.createGoalController = createGoalController;
+const getSpecilityController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, cms_service_1.getSpeciallityService)();
+        res.status(200).json({
+            status: 200,
+            message: "successfull",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.getSpecilityController = getSpecilityController;
+const createSpecilityController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, cms_service_1.createSpecialityService)(req.body);
+        res.status(201).json({
+            status: 201,
+            message: "New Record Added",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.createSpecilityController = createSpecilityController;
 //# sourceMappingURL=cms.controller.js.map

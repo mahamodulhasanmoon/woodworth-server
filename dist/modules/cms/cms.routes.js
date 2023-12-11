@@ -19,4 +19,15 @@ exports.cmsRoutes.route('/contacts')
 // authorization("admin"),
 cms_controller_1.createNewContactController)
     .get(cms_controller_1.getContactController);
+// goals
+exports.cmsRoutes.route('/goals')
+    .post(
+// authorization("admin"),
+cms_controller_1.createGoalController)
+    .get(cms_controller_1.getGoalsController);
+exports.cmsRoutes.route('/speciality')
+    .post(
+// authorization("admin"),
+cms_controller_1.createSpecilityController)
+    .get(cms_controller_1.getSpecilityController);
 //# sourceMappingURL=cms.routes.js.map

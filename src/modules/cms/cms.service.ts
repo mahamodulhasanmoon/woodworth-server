@@ -1,4 +1,4 @@
-import { Contact, Slider, Warrenty } from "./cms.model"
+import { Contact, Goal, Slider, Speciality, Warrenty } from "./cms.model"
 
 interface WarrentyData {
     claims: string;
@@ -88,6 +88,51 @@ export const createNewWarrentyService = async (data: WarrentyData) => {
   } catch (error) {
     throw new Error(error);
   }
+};
+
+// Goals
+
+export const createGoalService = async (data:String) => {
+
+  try {
+     const result = await Goal.create(data);
+     return   result
+ } catch (error) {
+     throw new Error(error)
+ }
+}
+
+export const getGoalService = async () => {
+try {
+  const result = await Goal.find({});
+
+  return result;
+} catch (error) {
+  throw new Error(error);
+}
+};
+
+
+// Why Choose Me
+
+export const createSpecialityService = async (data:String) => {
+
+  try {
+     const result = await Speciality.create(data);
+     return   result
+ } catch (error) {
+     throw new Error(error)
+ }
+}
+
+export const getSpeciallityService = async () => {
+try {
+  const result = await Speciality.find({});
+
+  return result;
+} catch (error) {
+  throw new Error(error);
+}
 };
   
   

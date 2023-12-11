@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getContactsService = exports.createNewContactService = exports.getWarrentyService = exports.createNewWarrentyService = exports.deleteSliderService = exports.getSliderService = exports.createNewSliderService = void 0;
+exports.getSpeciallityService = exports.createSpecialityService = exports.getGoalService = exports.createGoalService = exports.getContactsService = exports.createNewContactService = exports.getWarrentyService = exports.createNewWarrentyService = exports.deleteSliderService = exports.getSliderService = exports.createNewSliderService = void 0;
 const cms_model_1 = require("./cms.model");
 const createNewSliderService = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -86,4 +86,46 @@ const getContactsService = () => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.getContactsService = getContactsService;
+// Goals
+const createGoalService = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Goal.create(data);
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.createGoalService = createGoalService;
+const getGoalService = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Goal.find({});
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.getGoalService = getGoalService;
+// Why Choose Me
+const createSpecialityService = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Speciality.create(data);
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.createSpecialityService = createSpecialityService;
+const getSpeciallityService = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Speciality.find({});
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.getSpeciallityService = getSpeciallityService;
 //# sourceMappingURL=cms.service.js.map
