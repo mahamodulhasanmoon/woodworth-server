@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createNewSliderService, createNewWarrentyService, deleteSliderService, getSliderService, getWarrentyService ,createNewContactService, getContactsService, createGoalService, getGoalService, createSpecialityService, getSpeciallityService} from "./cms.service";
+import { createNewSliderService, createNewWarrentyService, deleteSliderService, getSliderService, getWarrentyService ,createNewContactService, getContactsService, createGoalService, getGoalService, createSpecialityService, getSpeciallityService, deleteContactsService, deleteGoalService, deleteSpecialityService} from "./cms.service";
 
 export const createNewSliderController = async (req:Request,res:Response) => {
     try {
@@ -160,6 +160,27 @@ export const createNewContactController = async (req:Request,res:Response) => {
         });
     }
 }
+export const deleteContactController = async (req:Request,res:Response) => {
+    try {
+        
+const {id} = req.params;
+        
+        const data= await deleteContactsService(id)
+    
+        res.status(200).json({
+            status:200,
+            message:"deleted successfully",
+            
+        });
+    } catch (error) {
+    
+        res.status(400).json({
+            status:400,
+            error:error,
+            message:error.message
+        });
+    }
+}
 
 // Goal set
 
@@ -206,6 +227,27 @@ export const createGoalController = async (req:Request,res:Response) => {
         });
     }
 }
+export const deleteGoalController = async (req:Request,res:Response) => {
+    try {
+        
+const {id} = req.params;
+        
+         await deleteGoalService(id)
+    
+       return res.status(200).json({
+            status:200,
+            message:"deleted successfully",
+            
+        });
+    } catch (error) {
+    
+        res.status(400).json({
+            status:400,
+            error:error,
+            message:error.message
+        });
+    }
+}
 
 export const getSpecilityController = async (req:Request,res:Response) => {
     try {
@@ -240,6 +282,27 @@ export const createSpecilityController = async (req:Request,res:Response) => {
             status:201,
             message:"New Record Added",
             data:data
+        });
+    } catch (error) {
+    
+        res.status(400).json({
+            status:400,
+            error:error,
+            message:error.message
+        });
+    }
+}
+export const deleteSpecialityController = async (req:Request,res:Response) => {
+    try {
+        
+const {id} = req.params;
+        
+         await deleteSpecialityService(id)
+    
+       return res.status(200).json({
+            status:200,
+            message:"deleted successfully",
+            
         });
     } catch (error) {
     

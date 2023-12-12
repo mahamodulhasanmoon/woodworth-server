@@ -90,6 +90,15 @@ export const createNewWarrentyService = async (data: WarrentyData) => {
   }
 };
 
+export const deleteContactsService = async (id:string) => {
+
+  try {
+     const result = await Contact.findByIdAndDelete(id);
+     return   result
+ } catch (error) {
+     throw new Error(error)
+ }
+}
 // Goals
 
 export const createGoalService = async (data:String) => {
@@ -111,6 +120,16 @@ try {
   throw new Error(error);
 }
 };
+
+export const deleteGoalService = async (id:string) => {
+
+  try {
+     const result = await Goal.findByIdAndDelete(id);
+     return   result
+ } catch (error) {
+     throw new Error(error)
+ }
+}
 
 
 // Why Choose Me
@@ -134,6 +153,16 @@ try {
   throw new Error(error);
 }
 };
+
+export const deleteSpecialityService = async (id:string) => {
+
+  try {
+     const result = await Speciality.findByIdAndDelete(id);
+     return   result
+ } catch (error) {
+     throw new Error(error)
+ }
+}
   
   
   

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createNewSliderController, createNewWarrentyController, deleteSliderController, getSliderController, getWarrentyController,createNewContactController, getContactController, createGoalController, getGoalsController, createSpecilityController, getSpecilityController } from "./cms.controller";
+import { createNewSliderController, createNewWarrentyController, deleteSliderController, getSliderController, getWarrentyController,createNewContactController, getContactController, createGoalController, getGoalsController, createSpecilityController, getSpecilityController, deleteGoalController, deleteSpecialityController, deleteContactController } from "./cms.controller";
 import { authorization } from "../../middleware/authorization";
 
 export const cmsRoutes = Router()
@@ -30,6 +30,10 @@ cmsRoutes.route('/contacts')
     // authorization("admin"),
     createNewContactController)
     .get(getContactController)
+    cmsRoutes.route('/contacts/:id')
+    .delete(
+        authorization("admin"),
+        deleteContactController)
 
     // goals
 
@@ -39,8 +43,18 @@ cmsRoutes.route('/contacts')
     createGoalController)
     .get(getGoalsController)
 
+    cmsRoutes.route('/goals/:id')
+.delete(
+    authorization("admin"),
+    deleteGoalController)
+
     cmsRoutes.route('/speciality')
 .post(
     // authorization("admin"),
     createSpecilityController)
     .get(getSpecilityController)
+
+    cmsRoutes.route('/speciality/:id')
+    .delete(
+        authorization("admin"),
+        deleteSpecialityController)

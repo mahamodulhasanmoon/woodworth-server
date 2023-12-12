@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSpeciallityService = exports.createSpecialityService = exports.getGoalService = exports.createGoalService = exports.getContactsService = exports.createNewContactService = exports.getWarrentyService = exports.createNewWarrentyService = exports.deleteSliderService = exports.getSliderService = exports.createNewSliderService = void 0;
+exports.deleteSpecialityService = exports.getSpeciallityService = exports.createSpecialityService = exports.deleteGoalService = exports.getGoalService = exports.createGoalService = exports.deleteContactsService = exports.getContactsService = exports.createNewContactService = exports.getWarrentyService = exports.createNewWarrentyService = exports.deleteSliderService = exports.getSliderService = exports.createNewSliderService = void 0;
 const cms_model_1 = require("./cms.model");
 const createNewSliderService = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -86,6 +86,16 @@ const getContactsService = () => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.getContactsService = getContactsService;
+const deleteContactsService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Contact.findByIdAndDelete(id);
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.deleteContactsService = deleteContactsService;
 // Goals
 const createGoalService = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -107,6 +117,16 @@ const getGoalService = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getGoalService = getGoalService;
+const deleteGoalService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Goal.findByIdAndDelete(id);
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.deleteGoalService = deleteGoalService;
 // Why Choose Me
 const createSpecialityService = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -128,4 +148,14 @@ const getSpeciallityService = () => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.getSpeciallityService = getSpeciallityService;
+const deleteSpecialityService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.Speciality.findByIdAndDelete(id);
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.deleteSpecialityService = deleteSpecialityService;
 //# sourceMappingURL=cms.service.js.map

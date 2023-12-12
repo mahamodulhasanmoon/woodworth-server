@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createSpecilityController = exports.getSpecilityController = exports.createGoalController = exports.getGoalsController = exports.createNewContactController = exports.getContactController = exports.getWarrentyController = exports.createNewWarrentyController = exports.deleteSliderController = exports.getSliderController = exports.createNewSliderController = void 0;
+exports.deleteSpecialityController = exports.createSpecilityController = exports.getSpecilityController = exports.deleteGoalController = exports.createGoalController = exports.getGoalsController = exports.deleteContactController = exports.createNewContactController = exports.getContactController = exports.getWarrentyController = exports.createNewWarrentyController = exports.deleteSliderController = exports.getSliderController = exports.createNewSliderController = void 0;
 const cms_service_1 = require("./cms.service");
 const createNewSliderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -139,6 +139,24 @@ const createNewContactController = (req, res) => __awaiter(void 0, void 0, void 
     }
 });
 exports.createNewContactController = createNewContactController;
+const deleteContactController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        const data = yield (0, cms_service_1.deleteContactsService)(id);
+        res.status(200).json({
+            status: 200,
+            message: "deleted successfully",
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.deleteContactController = deleteContactController;
 // Goal set
 const getGoalsController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -176,6 +194,24 @@ const createGoalController = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.createGoalController = createGoalController;
+const deleteGoalController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        yield (0, cms_service_1.deleteGoalService)(id);
+        return res.status(200).json({
+            status: 200,
+            message: "deleted successfully",
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.deleteGoalController = deleteGoalController;
 const getSpecilityController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield (0, cms_service_1.getSpeciallityService)();
@@ -212,4 +248,22 @@ const createSpecilityController = (req, res) => __awaiter(void 0, void 0, void 0
     }
 });
 exports.createSpecilityController = createSpecilityController;
+const deleteSpecialityController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        yield (0, cms_service_1.deleteSpecialityService)(id);
+        return res.status(200).json({
+            status: 200,
+            message: "deleted successfully",
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.deleteSpecialityController = deleteSpecialityController;
 //# sourceMappingURL=cms.controller.js.map
