@@ -32,7 +32,7 @@ cmsRoutes.route('/contacts')
     .get(getContactController)
     cmsRoutes.route('/contacts/:id')
     .delete(
-        authorization("admin"),
+        // authorization("admin"),
         deleteContactController)
 
     // goals
@@ -45,7 +45,7 @@ cmsRoutes.route('/contacts')
 
     cmsRoutes.route('/goals/:id')
 .delete(
-    authorization("admin"),
+    // authorization("admin"),
     deleteGoalController)
 
     cmsRoutes.route('/speciality')
@@ -56,5 +56,5 @@ cmsRoutes.route('/contacts')
 
     cmsRoutes.route('/speciality/:id')
     .delete(
-        authorization("admin"),
+        // authorization("admin"),
         deleteSpecialityController)
