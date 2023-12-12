@@ -20,7 +20,9 @@ exports.cmsRoutes.route('/contacts')
 cms_controller_1.createNewContactController)
     .get(cms_controller_1.getContactController);
 exports.cmsRoutes.route('/contacts/:id')
-    .delete((0, authorization_1.authorization)("admin"), cms_controller_1.deleteContactController);
+    .delete(
+// authorization("admin"),
+cms_controller_1.deleteContactController);
 // goals
 exports.cmsRoutes.route('/goals')
     .post(
@@ -28,12 +30,16 @@ exports.cmsRoutes.route('/goals')
 cms_controller_1.createGoalController)
     .get(cms_controller_1.getGoalsController);
 exports.cmsRoutes.route('/goals/:id')
-    .delete((0, authorization_1.authorization)("admin"), cms_controller_1.deleteGoalController);
+    .delete(
+// authorization("admin"),
+cms_controller_1.deleteGoalController);
 exports.cmsRoutes.route('/speciality')
     .post(
 // authorization("admin"),
 cms_controller_1.createSpecilityController)
     .get(cms_controller_1.getSpecilityController);
 exports.cmsRoutes.route('/speciality/:id')
-    .delete((0, authorization_1.authorization)("admin"), cms_controller_1.deleteSpecialityController);
+    .delete(
+// authorization("admin"),
+cms_controller_1.deleteSpecialityController);
 //# sourceMappingURL=cms.routes.js.map
