@@ -1,4 +1,4 @@
-import { Contact, Goal, Slider, Speciality, Warrenty } from "./cms.model"
+import { About, Contact, Goal, Slider, Speciality, Warrenty } from "./cms.model"
 
 interface WarrentyData {
     claims: string;
@@ -134,6 +134,8 @@ export const deleteGoalService = async (id:string) => {
 
 // Why Choose Me
 
+
+
 export const createSpecialityService = async (data:String) => {
 
   try {
@@ -163,8 +165,47 @@ export const deleteSpecialityService = async (id:string) => {
      throw new Error(error)
  }
 }
+
   
-  
+  /**
+ *
+ * Comment Section @TODO: on About Description Controller
+ *
+ */
+
+export const createAboutService = async (data:String) => {
+  console.log(data)
+
+  try {
+    const result = await About.findOneAndReplace({}, data, { upsert: true, new: true });
+    return result;
+ } catch (error) {
+     throw new Error(error)
+ }
+}
+
+export const getAboutService = async () => {
+try {
+  const result = await About.findOne();
+
+  return result;
+} catch (error) {
+  throw new Error(error);
+}
+};
+
+export const deleteAboutService = async (id:string) => {
+
+  try {
+     const result = await About.findByIdAndDelete(id);
+     return   result
+ } catch (error) {
+     throw new Error(error)
+ }
+}
+
+
+
   
   
 

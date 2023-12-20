@@ -38,11 +38,17 @@ const aboutUsSchema = new Schema({
     description: { type: String, required: true },
     thumbnail:{type: String}
 });
+const aboutSchema = new Schema({
+   
+    description: { type: String, required: true },
+    thumbnail:{type: String}
+});
 
 // Define the model
 export const Contact = model('Contacts', contactSchema);
 export const Slider = model('Slider',sliderSchema)
 export const Warrenty = model('Warrenty',warrentySchema)
 export const Speciality = model('Speciality',brandValueSchema)
+export const About = model('About',aboutSchema)
 export const Goal = model('Goal',aboutUsSchema)
 

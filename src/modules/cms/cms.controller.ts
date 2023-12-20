@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createNewSliderService, createNewWarrentyService, deleteSliderService, getSliderService, getWarrentyService ,createNewContactService, getContactsService, createGoalService, getGoalService, createSpecialityService, getSpeciallityService, deleteContactsService, deleteGoalService, deleteSpecialityService} from "./cms.service";
+import { createNewSliderService, createNewWarrentyService, deleteSliderService, getSliderService, getWarrentyService ,createNewContactService, getContactsService, createGoalService, getGoalService, createSpecialityService, getSpeciallityService, deleteContactsService, deleteGoalService, deleteSpecialityService, getAboutService, createAboutService, deleteAboutService} from "./cms.service";
 
 export const createNewSliderController = async (req:Request,res:Response) => {
     try {
@@ -298,6 +298,79 @@ export const deleteSpecialityController = async (req:Request,res:Response) => {
 const {id} = req.params;
         
          await deleteSpecialityService(id)
+    
+       return res.status(200).json({
+            status:200,
+            message:"deleted successfully",
+            
+        });
+    } catch (error) {
+    
+        res.status(400).json({
+            status:400,
+            error:error,
+            message:error.message
+        });
+    }
+}
+
+
+/**
+ *
+ * 
+ * @TODO: About description and Thumbnail
+ *
+ */
+
+export const getAboutController = async (req:Request,res:Response) => {
+    try {
+        
+
+        
+        const data= await getAboutService()
+    
+        res.status(200).json({
+            status:200,
+            message:"successfull",
+            data:data
+        });
+    } catch (error) {
+    
+        res.status(400).json({
+            status:400,
+            error:error,
+            message:error.message
+        });
+    }
+}
+
+export const createAboutController = async (req:Request,res:Response) => {
+    try {
+        
+
+        
+        const data= await createAboutService(req.body)
+    
+        res.status(201).json({
+            status:201,
+            message:"New Record Added",
+            data:data
+        });
+    } catch (error) {
+    
+        res.status(400).json({
+            status:400,
+            error:error,
+            message:error.message
+        });
+    }
+}
+export const deleteAboutController = async (req:Request,res:Response) => {
+    try {
+        
+const {id} = req.params;
+        
+         await deleteAboutService(id)
     
        return res.status(200).json({
             status:200,

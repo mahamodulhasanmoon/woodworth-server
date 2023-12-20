@@ -42,4 +42,14 @@ exports.cmsRoutes.route('/speciality/:id')
     .delete(
 // authorization("admin"),
 cms_controller_1.deleteSpecialityController);
+// For About Description Controller
+exports.cmsRoutes.route('/about')
+    .patch(
+// authorization("admin"),
+cms_controller_1.createAboutController)
+    .get(cms_controller_1.getAboutController);
+exports.cmsRoutes.route('/about/:id')
+    .delete(
+// authorization("admin"),
+cms_controller_1.deleteAboutController);
 //# sourceMappingURL=cms.routes.js.map

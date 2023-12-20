@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteSpecialityService = exports.getSpeciallityService = exports.createSpecialityService = exports.deleteGoalService = exports.getGoalService = exports.createGoalService = exports.deleteContactsService = exports.getContactsService = exports.createNewContactService = exports.getWarrentyService = exports.createNewWarrentyService = exports.deleteSliderService = exports.getSliderService = exports.createNewSliderService = void 0;
+exports.deleteAboutService = exports.getAboutService = exports.createAboutService = exports.deleteSpecialityService = exports.getSpeciallityService = exports.createSpecialityService = exports.deleteGoalService = exports.getGoalService = exports.createGoalService = exports.deleteContactsService = exports.getContactsService = exports.createNewContactService = exports.getWarrentyService = exports.createNewWarrentyService = exports.deleteSliderService = exports.getSliderService = exports.createNewSliderService = void 0;
 const cms_model_1 = require("./cms.model");
 const createNewSliderService = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -158,4 +158,40 @@ const deleteSpecialityService = (id) => __awaiter(void 0, void 0, void 0, functi
     }
 });
 exports.deleteSpecialityService = deleteSpecialityService;
+/**
+*
+* Comment Section @TODO: on About Description Controller
+*
+*/
+const createAboutService = (data) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(data);
+    try {
+        const result = yield cms_model_1.About.findOneAndReplace({}, data, { upsert: true, new: true });
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.createAboutService = createAboutService;
+const getAboutService = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.About.findOne();
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.getAboutService = getAboutService;
+const deleteAboutService = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield cms_model_1.About.findByIdAndDelete(id);
+        return result;
+    }
+    catch (error) {
+        throw new Error(error);
+    }
+});
+exports.deleteAboutService = deleteAboutService;
 //# sourceMappingURL=cms.service.js.map

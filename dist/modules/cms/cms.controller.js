@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteSpecialityController = exports.createSpecilityController = exports.getSpecilityController = exports.deleteGoalController = exports.createGoalController = exports.getGoalsController = exports.deleteContactController = exports.createNewContactController = exports.getContactController = exports.getWarrentyController = exports.createNewWarrentyController = exports.deleteSliderController = exports.getSliderController = exports.createNewSliderController = void 0;
+exports.deleteAboutController = exports.createAboutController = exports.getAboutController = exports.deleteSpecialityController = exports.createSpecilityController = exports.getSpecilityController = exports.deleteGoalController = exports.createGoalController = exports.getGoalsController = exports.deleteContactController = exports.createNewContactController = exports.getContactController = exports.getWarrentyController = exports.createNewWarrentyController = exports.deleteSliderController = exports.getSliderController = exports.createNewSliderController = void 0;
 const cms_service_1 = require("./cms.service");
 const createNewSliderController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -266,4 +266,64 @@ const deleteSpecialityController = (req, res) => __awaiter(void 0, void 0, void 
     }
 });
 exports.deleteSpecialityController = deleteSpecialityController;
+/**
+ *
+ *
+ * @TODO: About description and Thumbnail
+ *
+ */
+const getAboutController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, cms_service_1.getAboutService)();
+        res.status(200).json({
+            status: 200,
+            message: "successfull",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.getAboutController = getAboutController;
+const createAboutController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield (0, cms_service_1.createAboutService)(req.body);
+        res.status(201).json({
+            status: 201,
+            message: "New Record Added",
+            data: data
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.createAboutController = createAboutController;
+const deleteAboutController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { id } = req.params;
+        yield (0, cms_service_1.deleteAboutService)(id);
+        return res.status(200).json({
+            status: 200,
+            message: "deleted successfully",
+        });
+    }
+    catch (error) {
+        res.status(400).json({
+            status: 400,
+            error: error,
+            message: error.message
+        });
+    }
+});
+exports.deleteAboutController = deleteAboutController;
 //# sourceMappingURL=cms.controller.js.map
