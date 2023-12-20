@@ -38,7 +38,9 @@ const aboutUsSchema = new mongoose_1.Schema({
     thumbnail: { type: String }
 });
 const aboutSchema = new mongoose_1.Schema({
-    description: { type: String, required: true },
+    description1: { type: String, required: true },
+    description2: { type: String },
+    description3: { type: String },
     thumbnail: { type: String }
 });
 // Define the model

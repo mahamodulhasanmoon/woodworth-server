@@ -40,7 +40,9 @@ const aboutUsSchema = new Schema({
 });
 const aboutSchema = new Schema({
    
-    description: { type: String, required: true },
+    description1: { type: String, required: true },
+    description2: { type: String },
+    description3: { type: String  },
     thumbnail:{type: String}
 });
 
