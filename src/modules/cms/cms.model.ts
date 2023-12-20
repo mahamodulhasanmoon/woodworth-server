@@ -26,7 +26,7 @@ const contactSchema = new Schema({
     phone: { type: String, required: true },
     email: { type: String, required: true },
     region: { type: String, required: true },
-    websites: { type: String, required: true },
+    websites: { type: String },
 });
 const brandValueSchema = new Schema({
     title: { type: String, required: true },
