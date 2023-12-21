@@ -8,7 +8,6 @@ interface User {
 export const authorization = (...role: string[]) => {
   return (req: Request & { user?: User }, res: Response, next: NextFunction) => {
     const userRole: string | undefined = req.user?.role;
-    console.log(( req as any).userRole);
 
     if (!userRole || !role.includes(userRole)) {
       return res.status(403).json({

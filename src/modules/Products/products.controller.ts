@@ -120,7 +120,6 @@ export const createPoductsController = async (req:Request, res:Response) => {
                     
                     
                     const query = req.query
-                    console.log(query);
                     const data = await updateStatusByIdService(id,query)
                 
                     res.status(200).json({

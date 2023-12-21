@@ -98,7 +98,6 @@ export const getMe = async (req:Request, res:Response) => {
 export const updateUserByIdController = async (req:Request, res:Response) => {
   try {
       const {id} = req.params
-      console.log(id);
       
       const data = await updateUserByIdService(id,req.body)
   

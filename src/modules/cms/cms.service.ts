@@ -174,7 +174,6 @@ export const deleteSpecialityService = async (id:string) => {
  */
 
 export const createAboutService = async (data:String) => {
-  console.log(data)
 
   try {
     const result = await About.findOneAndReplace({}, data, { upsert: true, new: true });

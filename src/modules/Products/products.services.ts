@@ -25,7 +25,6 @@ export const getAllProductsService = async (queries: any) => {
     }
    
     if (!query?.category && (!query.isCanandaRegion && !query.isNewStyle  && !query.isAdmin)) {
-        console.log(query.isAdmin);
         query = { category: { $ne: '6554ca644e2d94d787efb661' } };
     }
  
