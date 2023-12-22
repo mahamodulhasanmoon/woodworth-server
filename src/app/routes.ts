@@ -5,6 +5,7 @@ import dealerRoutes from '../modules/dealers/dealer.routes';
 import uploaderRoutes from '../modules/uploader/uploader.routes';
 import { cmsRoutes } from '../modules/cms/cms.routes';
 import authRouter from '../modules/Authentication/user.routes';
+import ReviewRoutes from '../modules/review/review.routes';
 const routes = Router();
 
 
@@ -20,6 +21,7 @@ routes.use('/uploads',uploaderRoutes)
 
 
 routes.use('/categories',categoryRoutes)
+routes.use('/reviews',ReviewRoutes)
 routes.use('/products',productsRouter)
 routes.use('/dealer',dealerRoutes)
 routes.use('/auth',authRouter)
