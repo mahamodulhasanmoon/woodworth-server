@@ -117,7 +117,6 @@ const updateStatusByIdController = (req, res) => __awaiter(void 0, void 0, void 
     try {
         const { id } = req.params;
         const query = req.query;
-        console.log(query);
         const data = yield (0, products_services_1.updateStatusByIdService)(id, query);
         res.status(200).json({
             status: 200,

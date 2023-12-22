@@ -10,6 +10,7 @@ const dealer_routes_1 = __importDefault(require("../modules/dealers/dealer.route
 const uploader_routes_1 = __importDefault(require("../modules/uploader/uploader.routes"));
 const cms_routes_1 = require("../modules/cms/cms.routes");
 const user_routes_1 = __importDefault(require("../modules/Authentication/user.routes"));
+const review_routes_1 = __importDefault(require("../modules/review/review.routes"));
 const routes = (0, express_1.Router)();
 routes.get('/health', (_req, res) => {
     res.status(200).json({
@@ -20,6 +21,7 @@ routes.get('/health', (_req, res) => {
 // all Routes 
 routes.use('/uploads', uploader_routes_1.default);
 routes.use('/categories', categories_routes_1.default);
+routes.use('/reviews', review_routes_1.default);
 routes.use('/products', products_routes_1.productsRouter);
 routes.use('/dealer', dealer_routes_1.default);
 routes.use('/auth', user_routes_1.default);

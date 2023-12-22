@@ -164,7 +164,6 @@ exports.deleteSpecialityService = deleteSpecialityService;
 *
 */
 const createAboutService = (data) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(data);
     try {
         const result = yield cms_model_1.About.findOneAndReplace({}, data, { upsert: true, new: true });
         return result;

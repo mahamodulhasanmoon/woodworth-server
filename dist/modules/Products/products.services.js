@@ -34,7 +34,6 @@ const getAllProductsService = (queries) => __awaiter(void 0, void 0, void 0, fun
         isAdmin && (query.isAdmin = Boolean(isAdmin));
     }
     if (!(query === null || query === void 0 ? void 0 : query.category) && (!query.isCanandaRegion && !query.isNewStyle && !query.isAdmin)) {
-        console.log(query.isAdmin);
         query = { category: { $ne: '6554ca644e2d94d787efb661' } };
     }
     if (query.isAdmin) {
